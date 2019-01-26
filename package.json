@@ -1,0 +1,23 @@
+{
+  "name": "money-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zero4994/money-manager.git",
+  "author": "zero4994 <cavc94@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "nodemon": "^1.18.9",
+    "pg": "^7.8.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.12.1",
+    "eslint-config-prettier": "^3.6.0",
+    "eslint-config-problems": "^1.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "mocha": "^5.2.0",
+    "prettier": "^1.12.1"
+  }
+}
