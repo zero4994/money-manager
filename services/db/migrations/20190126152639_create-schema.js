@@ -16,7 +16,7 @@ exports.up = function(knex, Promise) {
       t.string("password", 1000).notNullable();
     })
     .createTable("accounts", t => {
-      t.increments("acc_num").defaultTo(10000000);
+      t.integer("acc_num", 8);
 
       t.integer("user_id", 8)
         .references("user_id")
@@ -28,9 +28,17 @@ exports.up = function(knex, Promise) {
       t.bigInteger("amount_available").notNullable();
 
       t.bigInteger("max_amount_deposit").notNullable();
-    });
+    }).raw(`
+      CREATE SEQUENCE seq_acc_num;
+      ALTER SEQUENCE seq_acc_num RESTART WITH 10000000;
+      ALTER TABLE accounts ALTER COLUMN acc_num SET DEFAULT nextval('seq_acc_num');
+      ALTER TABLE accounts ADD PRIMARY KEY (acc_num);
+      `);
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable("accounts").dropTable("users");
+  return knex.schema
+    .dropTable("accounts")
+    .dropTable("users")
+    .raw("DROP SEQUENCE seq_acc_num;");
 };
