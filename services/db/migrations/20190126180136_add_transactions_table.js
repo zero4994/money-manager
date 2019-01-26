@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
       .inTable("accounts")
       .notNullable();
 
-    t.bigInteger("amount").notNullable();
+    t.decimal("amount", 14.2).notNullable();
 
     t.integer("type", 1).notNullable();
 

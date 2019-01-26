@@ -25,9 +25,9 @@ exports.up = function(knex, Promise) {
 
       t.integer("acc_type", 2).notNullable();
 
-      t.bigInteger("amount_available").notNullable();
+      t.decimal("amount_available", 14.2).notNullable();
 
-      t.bigInteger("max_amount_deposit").notNullable();
+      t.decimal("max_amount_deposit", 14.2).notNullable();
     }).raw(`
       CREATE SEQUENCE seq_acc_num;
       ALTER SEQUENCE seq_acc_num RESTART WITH 10000000;
