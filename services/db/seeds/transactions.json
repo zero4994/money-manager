@@ -1,0 +1,47 @@
+[
+  {
+    "acc_num": 10000000,
+    "amount" : 100.00,
+    "type " : 0
+  },
+  {
+    "acc_num": 10000001,
+    "amount" : 10.00,
+    "type " : 1
+  },
+  {
+    "acc_num": 10000001,
+    "amount" : 9.99,
+    "type " : 1
+  },
+  {
+    "acc_num": 10000001,
+    "amount" : 26.50,
+    "type " : 1
+  },
+  {
+    "acc_num": 10000000,
+    "amount" : 30,
+    "type " : 1
+  },
+  {
+    "acc_num": 10000001,
+    "amount" : 100.00,
+    "type " : 1
+  },
+  {
+    "acc_num": 10000001,
+    "amount" : 39.99,
+    "type " : 1
+  },
+  {
+    "acc_num": 10000000,
+    "amount" : 4.00,
+    "type " : 1
+  },
+  {
+    "acc_num": 10000000,
+    "amount" : 10,
+    "type " : 1
+  }
+]
