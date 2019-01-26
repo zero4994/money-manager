@@ -10,10 +10,13 @@
     "rollback": "knex migrate:rollback --knexfile services/db/knexfile.js ",
     "seed": "knex seed:run --knexfile services/db/knexfile.js",
     "fix": "pretty-quick",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
     "knex": "^0.16.3",
     "nodemon": "^1.18.9"
   },
