@@ -46,10 +46,10 @@ The created database will have this schema<br>
 ![alt text](img/database-schema.png)
 
 >**Users**: This is the table that will hold all users
-<br>
+
 
 >**Accounts**: In this table the accounts will be stored. There should be only one account per user.
-<br>
+
 
 >**Transactions**: In this table all the transactions made by all users will be stored.
 
@@ -68,7 +68,8 @@ yarn seed
 >**password**: userpass<br>
 
 <br>
-Start the server<br>
+
+Start the server
 
 ```bash
 yarn dev
@@ -132,3 +133,26 @@ LoginUser(username: "bob.k", password: "userpass") {
 >Queries all transactions for specific user<br>
 
 The full list of resolvers is available at **server/schema.js**
+
+<br>
+
+### HTML Client
+
+Money manager comes with and embedded simple html client to use it go to
+
+```bash
+http://localhost:3000
+```
+
+on your browser. You will be prompted with to login.
+
+![alt text](img/html-client.png)
+
+You can use any of the users stored in the **Users** table.
+
+The defaults are: 
+
+>**username**: bob.k<br>
+>**password**: userpass<br><br>
+>**username**: harvey.ibarra<br>
+>**password**: userpass<br>
