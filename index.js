@@ -1,13 +1,12 @@
 const config = require("./server/config");
-const {schema: schemaDef} = require("./server/schema");
+const { schema: schemaDef } = require("./server/schema");
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
 const { buildSchema } = require("graphql");
-const root = require("./server/resolvers")
+const root = require("./server/resolvers")(config.database);
 const app = express();
 
 const schema = buildSchema(schemaDef);
-
 
 app.use(
   "/graphql",
