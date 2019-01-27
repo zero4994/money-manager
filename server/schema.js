@@ -10,9 +10,27 @@ module.exports = {
         date_of_birth: Date
         password: String
     }
+
+    type Account {
+        acc_num : Int
+        user_id : Int
+        acc_type: Int
+        amount_available : Float
+        max_amount_deposit : Float
+    }
+
+    type Transaction {
+        id: Int
+        acc_num: Int
+        amount: Float
+        type: Int
+        executed_at: Date
+    }
+
     type Query {
         Users: [User]
         LoginUser(username:String!, password: String!) : User
+        TransactionsByUser(userId: Int!): [Transaction]
     }
     `
 };

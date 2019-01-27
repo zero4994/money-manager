@@ -25,6 +25,31 @@ module.exports = config => {
         .then(users => {
           return users[0] || null;
         });
+    },
+    TransactionsByUser: request => {
+      const userId = request.userId;
+      return knex("accounts")
+        .where({ user_id: userId })
+        .select()
+        .then(account => {
+          if (account.length < 1) {
+            return Promise.reject(new Error("Invalid user"));
+          }
+          return account[0].acc_num;
+        })
+        .then(acc_num => {
+          return knex("transactions")
+            .where({ acc_num: acc_num })
+            .orderBy("executed_at", "desc")
+            .select();
+        })
+        .then(transactions => {
+          return transactions;
+        })
+        .catch(err => {
+          console.log("Error==>", err.message);
+          return null;
+        });
     }
   };
 };
