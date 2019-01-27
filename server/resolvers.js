@@ -26,6 +26,14 @@ module.exports = config => {
           return users[0] || null;
         });
     },
+    AccountInfo: request => {
+      return knex("accounts")
+        .where({ user_id: request.userId })
+        .select()
+        .then(accounts => {
+          return accounts[0] || null;
+        });
+    },
     TransactionsByUser: request => {
       const userId = request.userId;
       return knex("accounts")

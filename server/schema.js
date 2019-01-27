@@ -30,6 +30,7 @@ module.exports = {
     type Query {
         Users: [User]
         LoginUser(username:String!, password: String!) : User
+        AccountInfo(userId: Int!) : Account
         TransactionsByUser(userId: Int!): [Transaction]
     }
     `
