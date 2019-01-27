@@ -76,7 +76,7 @@ function populateTable(user) {
         const deleteTran = row.insertCell(5);
 
         id.innerHTML = index + 1;
-        amount.innerHTML = element.amount;
+        amount.innerHTML = `$${element.amount}`;
         type.innerHTML = element.type === 1 ? "Charge" : "Deposit";
         date.innerHTML = element.executed_at;
         editTran.innerHTML = `<button class="btn bg-transparent" onclick="onEdit(${
