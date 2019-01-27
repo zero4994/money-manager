@@ -17,6 +17,8 @@ app.use(
   })
 );
 
+app.use(express.static(`${__dirname}/app`)); 
+
 app.listen(config.express.port, () => {
   console.log(`Server is up an running on port ${config.express.port}`);
 });
