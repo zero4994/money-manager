@@ -9,5 +9,20 @@ Money Manager is powered by Graphql<br>
 Node<br>
 ![alt text](img/node-logo.png)
 
-and PostrgeSQL
+and PostrgeSQL<br>
 ![alt text](img/postgresql-logo.png)
+
+<br>
+## Set Up
+Clone this repository
+```bash
+git clone https://github.com/zero4994/money-manager.git
+```
+
+Install [PostgreSQL](https://postgresapp.com/) (on Mac)
+
+Create database
+
+```bash
+CREATE DATABASE m_manager;
+```
