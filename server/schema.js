@@ -41,7 +41,7 @@ module.exports = {
 
     type Mutation {
         NewTransaction(userId: Int!, transaction: TransactionInput!) : Transaction
-
+        EditTransaction(id: Int!, transaction: TransactionInput!): Transaction
         DeleteTransaction(transactionId: Int!): Transaction
     }
     `

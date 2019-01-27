@@ -17,6 +17,17 @@ module.exports = config => {
       });
   };
 
+  const getTransactionById = params => {
+    return knex("transactions")
+      .where({ id: params.id })
+      .then(transactions => {
+        if (transactions.length <= 0) {
+          return Promise.reject(new Error("Invalid ID!!!"));
+        }
+        return transactions[0];
+      });
+  };
+
   return {
     Users: request => {
       return knex("users")
@@ -93,17 +104,30 @@ module.exports = config => {
           return null;
         });
     },
-    DeleteTransaction: request => {
-      const id = request.transactionId;
+    EditTransaction: request => {
+      const id = request.id;
+      const newTransaction = request.transaction;
+
       return knex("transactions")
         .where({ id })
-        .select()
-        .then(transactions => {
-          if (transactions.length <= 0) {
-            return Promise.reject(new Error("Invalid ID!!!"));
-          }
-          return transactions[0];
+        .update({ amount: newTransaction.amount, type: newTransaction.type }, [
+          "id",
+          "acc_num",
+          "amount",
+          "type",
+          "executed_at"
+        ])
+        .then(transaction => {
+          return transaction[0];
         })
+        .catch(error => {
+          console.log("EditTransaction ==>", error.message);
+          return {};
+        });
+    },
+    DeleteTransaction: request => {
+      const id = request.transactionId;
+      return getTransactionById({ id })
         .then(transaction => {
           const promise = knex("transactions")
             .where({ id: transaction.id })
@@ -120,6 +144,7 @@ module.exports = config => {
         })
         .catch(error => {
           console.log("DeleteTransaction ==>", error.message);
+          return {};
         });
     }
   };
