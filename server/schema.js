@@ -1,6 +1,5 @@
 module.exports = {
-    schema : 
-    `
+  schema: `
     scalar Date
     
     type User {
@@ -13,6 +12,7 @@ module.exports = {
     }
     type Query {
         Users: [User]
+        LoginUser(username:String!, password: String!) : User
     }
     `
-}
+};

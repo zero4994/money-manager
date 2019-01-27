@@ -4,13 +4,15 @@
     "second_name": "",
     "sourname": "KRUEGER",
     "date_of_birth": "1994-09-08",
-    "password": "05D49692B755F99C4504B510418EFEEEEBFD466892540F27ACF9A31A326D6504"
+    "username": "bob.k",
+    "password": "05d49692b755f99c4504b510418efeeeebfd466892540f27acf9a31a326d6504"
   },
   {
     "first_name": "HARVEY",
     "second_name": "SAYED",
     "sourname": "IBARRA",
     "date_of_birth": "1994-09-08",
-    "password": "05D49692B755F99C4504B510418EFEEEEBFD466892540F27ACF9A31A326D6504"
+    "username": "harvey.ibarra",
+    "password": "05d49692b755f99c4504b510418efeeeebfd466892540f27acf9a31a326d6504"
   }
 ]
