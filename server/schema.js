@@ -27,11 +27,20 @@ module.exports = {
         executed_at: Date
     }
 
+    input TransactionInput {
+        amount: Float
+        type: Int
+    }
+
     type Query {
         Users: [User]
         LoginUser(username:String!, password: String!) : User
         AccountInfo(userId: Int!) : Account
         TransactionsByUser(userId: Int!): [Transaction]
+    }
+
+    type Mutation {
+        NewTransaction(userId: Int!, transaction: TransactionInput!) : Transaction
     }
     `
 };

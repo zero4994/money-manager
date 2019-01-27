@@ -7,6 +7,16 @@ module.exports = config => {
     port: config.port,
     connection: config.connection
   });
+
+  const getAccountInfoByUserName = params => {
+    return knex("accounts")
+      .where({ user_id: params.userId })
+      .select()
+      .then(accounts => {
+        return accounts[0] || null;
+      });
+  };
+
   return {
     Users: request => {
       return knex("users")
@@ -27,12 +37,7 @@ module.exports = config => {
         });
     },
     AccountInfo: request => {
-      return knex("accounts")
-        .where({ user_id: request.userId })
-        .select()
-        .then(accounts => {
-          return accounts[0] || null;
-        });
+      return getAccountInfoByUserName(request);
     },
     TransactionsByUser: request => {
       const userId = request.userId;
@@ -56,6 +61,35 @@ module.exports = config => {
         })
         .catch(err => {
           console.log("Error==>", err.message);
+          return null;
+        });
+    },
+    NewTransaction: request => {
+      const userId = request.userId;
+      return getAccountInfoByUserName({ userId })
+        .then(accounts => {
+          if (accounts === null) {
+            return Promise.reject(new Error("Invalid user!"));
+          }
+          return accounts.acc_num;
+        })
+        .then(acc_num => {
+          console.log("Inserting data for account =>", acc_num);
+          return knex("transactions").insert(
+            {
+              acc_num,
+              amount: request.transaction.amount,
+              type: request.transaction.type
+            },
+            ["id", "acc_num", "amount", "type", "executed_at"]
+          );
+        })
+        .then(something => {
+          console.log("Transaction Inserted!!");
+          return something[0];
+        })
+        .catch(error => {
+          console.log("NewTransaction =>", error.message);
           return null;
         });
     }
