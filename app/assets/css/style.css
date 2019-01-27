@@ -1,7 +1,15 @@
 .nav-brand-green {
-    background-color: #98e0b1;
+  background-color: #98e0b1;
 }
 
 #login {
-    position: relative;
+  position: relative;
+}
+
+.edit-color {
+  color: blue;
+}
+
+.delete-color {
+  color: red;
 }

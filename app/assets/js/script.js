@@ -33,6 +33,7 @@ function login(form) {
       if (!data.data.LoginUser) {
         alert("Invalid username or password!!");
       } else {
+        localStorage.setItem("user", JSON.stringify(data.data.LoginUser));
         window.location = "routes/dashboard.html";
       }
     })

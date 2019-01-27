@@ -4,9 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Money Manager</title>
+
+    <script src="../assets/js/dashboard.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
   </head>
-  <body>
-    <h3>You successfully logged in</h3>
+  <body style="margin-top: 100px;" onload="greet()">
+    <nav
+      class="navbar navbar-dark navbar-expand-md nav-brand-green fixed-top py-4"
+    >
+      <div class="container">
+        <a href="/index.html" class="navbar-brand">
+          <h3 class="d-inline align-middle">Money Manager</h3>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a id="username" class="nav-link text-dark mr-5"></a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-secondary">Account</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section id="login" class="py-5">
+      <div class="container">
+        <table id="transactionsTable" class="table">
+          <thead class="thead-info">
+            <tr>
+              <th>#</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Date</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
   </body>
 </html>
