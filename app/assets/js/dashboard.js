@@ -1,5 +1,7 @@
-function onEdit(id) {
-  console.log(id);
+function onEdit(id, amount, type) {
+  localStorage.removeItem("transaction");
+  localStorage.setItem("transaction", JSON.stringify({id, amount, type}));
+  window.location = "editTransaction.html"
 }
 
 function onDelete(id) {
@@ -79,9 +81,8 @@ function populateTable(user) {
         amount.innerHTML = `$${element.amount}`;
         type.innerHTML = element.type === 1 ? "Charge" : "Deposit";
         date.innerHTML = element.executed_at;
-        editTran.innerHTML = `<button class="btn bg-transparent" onclick="onEdit(${
-          element.id
-        })"> <i class="fas fa-edit edit-color"></i> </button>`;
+        editTran.innerHTML = `<button class="btn bg-transparent" onclick="onEdit(${element.id}, ${element.amount}, ${element.type})"> 
+                              <i class="fas fa-edit edit-color"></i> </button>`;
         deleteTran.innerHTML = `<button class="btn bg-transparent" onclick="onDelete(${
           element.id
         })"><i class="fas fa-trash-alt delete-color"></i></button>`;

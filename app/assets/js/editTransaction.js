@@ -2,10 +2,19 @@ function onLoadBody() {
   const user = JSON.parse(localStorage.getItem("user"));
   const element = document.getElementById("username");
   element.innerHTML = `${user.first_name} ${user.sourname}`;
+
+  const transaction = JSON.parse(localStorage.getItem("transaction"));
+
+  const amountElement = document.getElementById("amount");
+  amountElement.value = transaction.amount;
+
+  const typeElement = document.getElementById("type");
+  typeElement.selectedIndex = transaction.type;
 }
 
-function addTransaction(form) {
-  const user = JSON.parse(localStorage.getItem("user"));
+
+function editTransaction(form) {
+  const transaction = JSON.parse(localStorage.getItem("transaction"));
   const type = form.type.selectedIndex;
   const amount = parseFloat(form.amount.value);
 
@@ -17,7 +26,7 @@ function addTransaction(form) {
     body: JSON.stringify({
       query: `
           mutation { 
-            NewTransaction(userId: ${user.user_id}, transaction: { amount: ${amount}, type: ${type} }) { 
+            EditTransaction(id: ${transaction.id}, transaction: { amount: ${amount}, type: ${type} }) { 
               id
               acc_num
               amount
@@ -32,7 +41,7 @@ function addTransaction(form) {
       return response.json();
     })
     .then(data => {
-      window.location = "dashboard.html";
+        window.location = "dashboard.html";
     })
     .catch(error => {
       console.log(error);
