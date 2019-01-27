@@ -3,7 +3,7 @@
 
 >Money Manager is a simple API that helps you keep track of your expenses.
 
-Money Manager is powered by Graphql 
+Money Manager is powered by Graphql<br> 
 ![alt text](img/graphql-logo.png)
 
 Node
