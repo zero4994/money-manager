@@ -47,8 +47,10 @@ The created database will have this schema<br>
 
 >**Users**: This is the table that will hold all users
 <br>
+
 >**Accounts**: In this table the accounts will be stored. There should be only one account per user.
 <br>
+
 >**Transactions**: In this table all the transactions made by all users will be stored.
 
 <br>
@@ -87,7 +89,7 @@ http://localhost:3000/graphql
 ```
 
 on your browser. Here are some queries you can test:
-
+<br>
 ```bash
 {
 LoginUser(username: "bob.k", password: "userpass") { 
@@ -101,7 +103,7 @@ LoginUser(username: "bob.k", password: "userpass") {
 }
 ```
 
->Logs in the user
+>Logs in the user<br>
 
 ```bash
 {
@@ -114,7 +116,7 @@ LoginUser(username: "bob.k", password: "userpass") {
   }
 }
 ```
->Queries account information from specific user
+>Queries account information from specific user<br>
 
 ```bash
 {
@@ -127,6 +129,6 @@ LoginUser(username: "bob.k", password: "userpass") {
   }
 }
 ```
->Queries all transactions for specific user
+>Queries all transactions for specific user<br>
 
 The full list of resolvers is available at **server/schema.js**
