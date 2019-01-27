@@ -92,6 +92,35 @@ module.exports = config => {
           console.log("NewTransaction =>", error.message);
           return null;
         });
+    },
+    DeleteTransaction: request => {
+      const id = request.transactionId;
+      return knex("transactions")
+        .where({ id })
+        .select()
+        .then(transactions => {
+          if (transactions.length <= 0) {
+            return Promise.reject(new Error("Invalid ID!!!"));
+          }
+          return transactions[0];
+        })
+        .then(transaction => {
+          const promise = knex("transactions")
+            .where({ id: transaction.id })
+            .del();
+          return Promise.all([promise, transaction]);
+        })
+        .then(deletedRows => {
+          const [deleted, transaction] = [...deletedRows];
+          console.log("deletedRows==>", deleted, transaction);
+          if (deleted <= 0) {
+            return Promise.reject(new Error("Row Not Deleted!!"));
+          }
+          return transaction;
+        })
+        .catch(error => {
+          console.log("DeleteTransaction ==>", error.message);
+        });
     }
   };
 };
