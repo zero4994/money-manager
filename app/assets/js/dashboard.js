@@ -4,10 +4,41 @@ function onEdit(id) {
 
 function onDelete(id) {
   console.log(id);
+  const message = "Are you sure you want to delete this transaction?";
+  if (confirm(message)){
+    console.log("lets delete some stuff");
+    fetch("/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        query: `
+        mutation { 
+          DeleteTransaction(transactionId: ${id}) { 
+            id
+            acc_num
+            amount
+            type
+            executed_at
+          } 
+        }
+      `
+      })
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        location.reload();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 }
 
 function populateTable(user) {
-  console.log(user);
   fetch("/graphql", {
     method: "POST",
     headers: {
@@ -31,7 +62,7 @@ function populateTable(user) {
       return response.json();
     })
     .then(data => {
-      console.log("the data it responded==>", data.data);
+      //console.log("the data it responded==>", data.data);
       const table = document.getElementById("transactionsTable");
 
       data.data.TransactionsByUser.forEach((element, index) => {
