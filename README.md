@@ -13,7 +13,10 @@ and PostrgeSQL<br>
 ![alt text](img/postgresql-logo.png)
 
 <br>
-## Set Up
+
+## Setup
+
+Install [PostgreSQL](https://postgresapp.com/) (on Mac)
 
 Clone this repository
 
@@ -21,7 +24,11 @@ Clone this repository
 git clone https://github.com/zero4994/money-manager.git
 ```
 
-Install [PostgreSQL](https://postgresapp.com/) (on Mac)
+Install dependencies
+
+```bash
+yarn
+```
 
 Create database
 
@@ -32,7 +39,7 @@ CREATE DATABASE m_manager;
 Run migrations files
 
 ```bash
-yarn migrate;
+yarn migrate
 ```
 
 The created database will have this schema<br>
@@ -49,11 +56,77 @@ The created database will have this schema<br>
 Run seed file
 
 ```bash
-yarn seed;
+yarn seed
 ```
 
->The seed files contains two users<br>
+>The seed files contains two users<br><br>
 >**username**: bob.k<br>
 >**password**: userpass<br><br>
 >**username**: harvey.ibarra<br>
 >**password**: userpass<br>
+
+<br>
+Start the server<br>
+
+```bash
+yarn dev
+```
+<br>
+
+## Endpoints
+
+There are two ways to test the endpoints, using graphiql interface and with the embedded html client
+
+<br>
+
+### Graphiql
+To use graphiql start the server and go to 
+
+```bash
+http://localhost:3000/graphql
+```
+
+on your browser. Here are some queries you can test:
+
+```bash
+{
+LoginUser(username: "bob.k", password: "userpass") { 
+  	user_id
+    first_name
+    second_name
+    sourname
+    date_of_birth
+    password
+  }
+}
+```
+
+>Logs in the user
+
+```bash
+{
+  AccountInfo(userId: 1) { 
+    acc_num
+    user_id
+    acc_type
+    amount_available
+    max_amount_deposit
+  }
+}
+```
+>Queries account information from specific user
+
+```bash
+{
+  TransactionsByUser(userId: 1) { 
+    id
+    acc_num
+    amount
+    type
+    executed_at
+  }
+}
+```
+>Queries all transactions for specific user
+
+The full list of resolvers is available at **server/schema.js**
