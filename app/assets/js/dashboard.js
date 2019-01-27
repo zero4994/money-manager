@@ -79,7 +79,8 @@ function populateTable(user) {
 
         id.innerHTML = index + 1;
         amount.innerHTML = `$${element.amount}`;
-        type.innerHTML = element.type === 1 ? "Charge" : "Deposit";
+        //type.innerHTML = element.type === 1 ? "Charge" : "Deposit";
+        type.innerHTML = element.type === 1 ? `<i class="fas fa-plus deposit-color"></i>` : `<i class="fas fa-minus charge-color"></i>`;
         date.innerHTML = element.executed_at;
         editTran.innerHTML = `<button class="btn bg-transparent" onclick="onEdit(${element.id}, ${element.amount}, ${element.type})"> 
                               <i class="fas fa-edit edit-color"></i> </button>`;
