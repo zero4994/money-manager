@@ -6,7 +6,7 @@
 Money Manager is powered by Graphql<br> 
 ![alt text](img/graphql-logo.png)
 
-Node
+Node<br>
 ![alt text](img/node-logo.png)
 
 and PostrgeSQL
